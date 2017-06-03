@@ -1,0 +1,28 @@
+<ion-view view-title="After School Program">
+  <ion-content class="padding">
+    <h2>Attendance</h2>
+    <div class="button-bar">
+      <a class="button button-positive">Name</a>
+      <a class="button button-positive">Yes</a>
+      <a class="button button-positive">No</a>
+    </div>
+    <div class="list list-inset">
+      <div class="item" ng-repeat="student in studentList">
+        <div class="row">
+          <div class="col">
+            {{student.studentName}}
+          </div>
+          <div class="col">
+            <ion-radio ng-model="student.attendance" name="{{student.studentName}}" value="P">Present</ion-radio>
+          </div>
+          <div class="col">
+            <ion-radio ng-model="student.attendance" name="{{student.studentName}}" value="A">Absent</ion-radio>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="button button-positive" ng-click="submitAttendanceData()">
+      Submit Data
+    </button>
+  </ion-content>
+</ion-view>

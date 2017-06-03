@@ -1,0 +1,27 @@
+/* Empty. Add your own CSS if you like */
+.header-item img {
+    height: inherit;
+}
+.item-icon-left img{
+	height: 35px;
+	left: 15px;
+	position: absolute;
+}
+.centeralign {
+	text-align: center;
+}
+ion-header-bar.bar-light.bar.bar-header {
+	height: 30px;
+    position: initial;
+}
+ion-header-bar.bar-light.bar.bar-header img{
+	height: inherit;
+    padding-left: 30%;
+}
+.selectedItem{
+	zoom: 120%;
+}
+
+.tabs-top > .tabs, .tabs.tabs-top{
+	display: none;
+}

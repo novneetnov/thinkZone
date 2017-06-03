@@ -1,0 +1,25 @@
+<ion-content class="padding">
+	<div ng-hide="stateVisibility.hideWeek">
+		<div class="button-bar">
+			<button class="button button-clear button-positive icon-right ion-chevron-right">
+				{{selections.selectedCourse.courseName}}
+	      	</button>
+			<button class="button button-clear button-positive icon-right ion-chevron-right">
+				{{selections.selectedMonth.monthName}}
+	      	</button>
+	      	<button class="button button-clear button-positive icon-right ion-chevron-right">
+				{{selections.selectedWeek.weekName}}
+	      	</button>
+	  	</div>
+		<h2>Select a course detail</h2>
+		<div class="button-bar">
+		  <a class="button button-outline button-positive" ng-click="onCourseDetailSelection('attendance')">Attendance</a>
+		  <a class="button button-outline button-positive" ng-click="onCourseDetailSelection('activities')">Activities</a>
+		</div>
+		<div class="button-bar">
+		  <a class="button button-outline button-positive" ng-click="onCourseDetailSelection('test')">Test</a>
+		  <a class="button button-outline button-positive" ng-click="onCourseDetailSelection('miscellaneous')">Miscellaneous</a>
+		</div>
+	</div>
+	<ion-nav-view></ion-nav-view>
+</ion-content>

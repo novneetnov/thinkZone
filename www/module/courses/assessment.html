@@ -1,0 +1,12 @@
+<ion-content class="padding">
+  <h2 class="centeralign">Assessment for {{commonApplicationData.schoolType}}</h2>
+  <ul class="list">
+    <li class="item" ng-repeat="item in classRoomData">
+      <h3 class="centeralign">
+        {{item.level}}
+      </h3>
+      <p>{{item.content}}</p>
+
+    </li>
+  </ul>
+</ion-content>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- thinkZone app js -->
+    <script src="module/app.js"></script>
+    <script src="module/services.js"></script>
+    <!-- <script src="module/controllers.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+    <!-- Common module sciprt files -->
+    <script src="module/common/commonFactory.js"></script>
+
+    <!-- Login module sciprt files -->
+    <script src="module/login/loginFactory.js"></script>
+    <script src="module/login/loginCtrl.js"></script>
+
+    <!-- Dashboard module sciprt files -->
+    <script src="module/dashboard/dashboardCtrl.js"></script>
+
+    <!-- Course module sciprt files -->
+    <script src="module/courses/courseCtrl.js"></script>
+    <script src="module/courses/courseFactory.js"></script>
+
+    <!-- Payment module sciprt files -->
+    <script src="module/payment/paymentCtrl.js"></script>
+    <script src="module/payment/paymentFactory.js"></script>
+
+    <!-- Student module sciprt files -->
+    <script src="module/student/studentCtrl.js"></script>
+    <!-- Education Program module sciprt files -->
+    <script src="module/courses/educationProgramCtrl.js"></script>
+    <!-- Class Room module sciprt files -->
+    <script src="module/courses/classRoomCtrl.js"></script>
+    <script src="module/courses/attendanceCtrl.js"></script>
+    <script src="module/courses/activitiesCtrl.js"></script>
+    <script src="module/courses/assessmentCtrl.js"></script>
+
+  </head>
+  <body ng-app="thinkZone">
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-header-bar class="bar-light">
+      <img src="./img/logo.png">
+    </ion-header-bar>
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>
