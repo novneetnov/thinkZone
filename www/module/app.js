@@ -79,7 +79,7 @@ angular.module('thinkZone', ['ui.router','ionic', 'thinkZone.controllers', 'thin
   .state('paymentDetails', {
     url: '/paymentDetails',
     templateUrl: 'module/payment/payment-details.html',
-    controller: 'PaymentDetailsCtrl'
+    controller: 'PaymentsCtrl'
   })
 
   .state('classRoom', {
@@ -106,55 +106,7 @@ angular.module('thinkZone', ['ui.router','ionic', 'thinkZone.controllers', 'thin
     controller: 'AssessmentCtrl'
   })
 
-  /*.state('preSchool', {
-    url: '/preSchool',
-    templateUrl: 'module/pre-school.html',
-    controller: 'PreSchoolCtrl'
-  })
-
-  .state('afterSchool', {
-    url: '/afterSchool',
-    templateUrl: 'module/after-school.html',
-    controller: 'AfterSchoolCtrl'
-  })
-
-  .state('afterSP.course', {
-    url: '/course/:courseID',
-    templateUrl: 'module/course.html',
-    controller: 'CourseCtrl'
-  })
-
-  .state('afterSP.course.month', {
-    url: '/month/:monthID',
-    templateUrl: 'module/month.html',
-    controller: 'MonthCtrl'
-  })
-
-  .state('afterSP.course.month.week', {
-    url: '/week/:weekID',
-    templateUrl: 'module/week.html',
-    controller: 'WeekCtrl'
-  })
-
-  .state('attendance', {
-    url: '/attendance',
-    templateUrl: 'module/attendance.html',
-    controller: 'AttendanceCtrl'
-  })
-
-  .state('activities', {
-    url: '/activities',
-    templateUrl: 'module/activities.html',
-    controller: 'ActivitiesCtrl'
-  })
-
-  .state('assessment', {
-    url: '/assessment',
-    templateUrl: 'module/assessment.html',
-    controller: 'AssessmentCtrl'
-  })
-
-  .state('test', {
+  /*.state('test', {
     url: '/test',
     params : { breadCrumbData: null },
     templateUrl: 'module/test.html',

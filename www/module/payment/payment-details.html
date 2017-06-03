@@ -1,7 +1,27 @@
 <ion-content class="padding">
-    <h2 class="centeralign">All Payment List</h2>
-    <div class="button-bar">
-      <a class="button button-outline button-positive" href="#/preSP">Pre School Program</a>
-      <a class="button button-outline button-positive" href="#/afterSP">After School Program</a>
-    </div>
+	<h2 class="centeralign">All Payment List</h2>
+	<div class="button-bar">
+		<a class="button button-outline button-positive" 
+		 href="" ng-click="showPreSchoolPayments()">Pre School</a>
+		<a class="button button-outline button-positive" 
+		 href="" ng-click="showAfterSchoolPayments()">After School</a>
+	</div>
+
+
+	<div class="list list-inset">
+		<div class="item item-divider">
+			{{studentCategory | uppercase}} School Students
+		</div>
+		<div ng-repeat="student in students | filter:{ category: studentCategory }" 
+			 ng-if="selected" 
+		class="item item-avatar item-text-wrap">
+			<img ng-src="{{student.image}}" alt="student">
+			<h2><strong>{{student.name}}</strong></h2>
+			<h4><strong>{{student.level}}</strong></h4>
+			<p>Tuition Fees:- {{student.tuitionFees | currency : "Rs. "}}</p>
+			<p>Paid:- {{student.feesPaid | currency : "Rs. " }}</p>
+			<button class="button button-small button-positive" ng-click="addFees(student)">Add Fees</button>
+		</div>
+	</div>
+
 </ion-content>

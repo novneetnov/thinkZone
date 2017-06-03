@@ -9,7 +9,7 @@ angular.module('thinkZone.controllers', [])
   //console.log(decrypted);
   //console.log(decrypted.toString(CryptoJS.enc.Utf8));
   $scope.userLogin = function(){
-    CommonFactory.setTeacherData();
+    CommonFactory.setCurrentTeacherData();
     $state.go('teacherDashboard');
   }
 });
