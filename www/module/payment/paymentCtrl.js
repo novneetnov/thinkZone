@@ -1,65 +1,60 @@
 angular.module('thinkZone.controllers')
 
 .controller('PaymentsCtrl', 
-	[ '$scope', 'paymentFactory', '$ionicPopup', 
-	function($scope, paymentFactory, $ionicPopup) {
+	[ '$scope', 'PaymentFactory', '$ionicModal', 
+	function($scope, PaymentFactory, $ionicModal) {
 
 	$scope.studentCategory = '';
 	$scope.selected = false;
 
-	$scope.showPreSchoolPayments = function() {
-		$scope.studentCategory = 'pre';
+	$scope.showSchoolPayments = function(category) {
+		$scope.studentCategory = category;
 		$scope.selected = true;
-	}
-
-	$scope.showAfterSchoolPayments = function() {
-		$scope.studentCategory = 'after';
-		$scope.selected = true;
-	}
-
-	//$scope.students = paymentFactory.getStudents();
-	paymentFactory.getStudents()
-	.then(
-		function(response) {
-			$scope.students = response.data;
-		},
-		function(response) {
-			$scope.message = "Error: " + response.status + " " + response.statusText;
+		$scope.paymentDetails = PaymentFactory.getNewTeacherData().paymentDetails;
+		if(category === 'pre'){
+			$scope.categoryPaymentDetails = $scope.paymentDetails.preSchool;
 		}
-	);
-
-	$scope.data = {};
-	$scope.addFees = function(student) {
-		// popup show here 
-		var addFeesPopup = $ionicPopup.show({
-			scope: $scope,
-			title: 'Add Fees for ' + student.name,
-			template: '<input type="number" ng-model="data.fees" min="0" active></input>',
-			buttons: [
-				{ text: 'Cancel' },
-				{
-					text: 'Add Fees',
-					type: 'button-positive',
-					onTap: function(e) {
-						if (!$scope.data.fees) {
-            //don't allow the user to close unless he enters a valid fees
-            	e.preventDefault();
-						} else {
-							return $scope.data.fees;
-						}
-					}
-				}
-			]
-		});
-
-		addFeesPopup.then(function(res) {
-			if(res) {
-				console.log($scope.data.fees);
-				paymentFactory.updateFeesPaid(student, res);
-			} else {
-				console.log('You are not sure');
-			}		
-		});
+		else if(category === 'after') {
+			$scope.categoryPaymentDetails = $scope.paymentDetails.afterSchool;
+		}
 	}
-}])
+
+	$scope.studentList = PaymentFactory.getNewTeacherData().studentList;
+	//PaymentFactory.getStudents()
+	//.then(
+		//function(response) {
+			//$scope.students = response.data;
+		//},
+		//function(response) {
+			//$scope.message = "Error: " + response.status + " " + response.statusText;
+		//}
+	//);
+
+	var currentStudent = {};
+	$scope.addFeesModal = function(student) {
+		$scope.installmentform.show();
+		currentStudent = student;
+	};
+
+	$ionicModal.fromTemplateUrl('module/payment/installment.html', {
+		scope: $scope
+	}).then(function(modal) {
+		$scope.installmentform = modal;
+	});	
+
+	$scope.closeInstallment = function() {
+		$scope.installmentform.hide();
+	};
+
+	$scope.submitInstallment = function(installment) {
+		var newStudentInstalment = {"student": currentStudent, "installment": installment}
+		PaymentFactory.updateStudentFees(newStudentInstalment);
+		$scope.closeInstallment();
+	};
+
+	$scope.showInstallments = function(installmentsArray) {
+		console.log(installmentsArray);
+	}
+
+}])		
 ;
