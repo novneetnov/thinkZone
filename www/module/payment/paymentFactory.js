@@ -309,10 +309,43 @@ angular.module('thinkZone.services')
 		// push this particular installment in feeInstallments array
 		// Also, add this instalment instance to currentTeacherData object so that it will reflect in this student's total amount paid
 		// newStudentInstalment: {student:{},installment:{"amountPaid":"",paymentDate:"",comments:""}}
+
+		var student = newStudentInstalment.student;
+		var classCategory = student.classCategory;
+		var installment = newStudentInstalment.installment;
+		this.getCurrentTeacherData();
+		if (classCategory === 'pre') {
+			var newPaymentDetails = 
+				this.findStudentPaymentDetails(student, newTeacherData.paymentDetails.preSchool);
+			newPaymentDetails.feeInstalments.push(installment);
+			newPaymentDetails.totalFeesPaid = (parseInt(newPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+			var currentPaymentDetails = 
+				this.findStudentPaymentDetails(student, currentTeacherData.paymentDetails.preSchool);
+			currentPaymentDetails.feeInstalments.push(installment);
+			currentPaymentDetails.totalFeesPaid = (parseInt(currentPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+		} else if(classCategory == 'after') {
+			var newPaymentDetails = 
+				this.findStudentPaymentDetails(student, newTeacherData.paymentDetails.afterSchool);
+			newPaymentDetails.feeInstalments.push(installment);
+			newPaymentDetails.totalFeesPaid = (parseInt(newPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+			var currentPaymentDetails = 
+				this.findStudentPaymentDetails(student, currentTeacherData.paymentDetails.afterSchool);
+			currentPaymentDetails.feeInstalments.push(installment);
+			currentPaymentDetails.totalFeesPaid = (parseInt(currentPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+		}
+	}
+
+	payFac.findStudentPaymentDetails = function(student, paymentDetailsCategoryArr) {
+		for (i=0; i<paymentDetailsCategoryArr.length; i++) {
+			details = paymentDetailsCategoryArr[i];
+			if (details.studentId === student.studentId){
+				return details;
+			}
+		}
 	}
 
 	payFac.getCurrentTeacherData = function() {
-		return storedUserData();
+		return this.storedUserData();
 		//return $http.get(apiURL+"students/");
 	}
 
