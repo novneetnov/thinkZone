@@ -20,7 +20,7 @@
 			<h4><strong>{{student.level}}</strong></h4>
 			<!--<p>Tuition Fees:- {{student.tuitionFees | currency : "Rs. "}}</p>-->
 			<p>Total Fees Paid:- {{categoryPaymentDetails[$index].totalFeesPaid | currency : "Rs. " }}</p>
-			<button class="button button-small button-positive" ng-click="addFees(student)">Add Fees</button>
+			<button class="button button-small button-positive" ng-click="addFeesModal(student)">Add Fees</button>
 		</div>
 	</div>
 
