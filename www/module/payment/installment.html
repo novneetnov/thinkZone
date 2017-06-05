@@ -1,0 +1,30 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Add Student Fees</h1>
+		<div class="buttons">
+			<button class="button button-icon con ion-ios-close-outline" ng-click="closeInstallment()"></button>
+		</div>
+	</ion-header-bar>
+
+	<ion-content>
+		<form id="installmentForm" name="installmentForm" ng-submit="submitInstallment(installment)">
+			<div class="list">
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Amount Paid</span>
+					<input type="number" placeholder="Amount Paid by Student" ng-model="installment.amount">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">Date</span>
+					<input type="date" placeholder="Installment Date" ng-model="installment.date">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Comment</span>
+					<input type="text" placeholder="Comments" ng-model="installment.comment">
+				</label>
+				<label class="item">
+					<button class="button button-block button-positive" type="submit">Add Fees</button>
+				</label>
+			</div>
+		</form>
+	</ion-content>
+</ion-modal-view>

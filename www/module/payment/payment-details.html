@@ -2,9 +2,9 @@
 	<h2 class="centeralign">All Payment List</h2>
 	<div class="button-bar">
 		<a class="button button-outline button-positive" 
-		 href="" ng-click="showPreSchoolPayments()">Pre School</a>
+		 href="" ng-click="showSchoolPayments('pre')">Pre School</a>
 		<a class="button button-outline button-positive" 
-		 href="" ng-click="showAfterSchoolPayments()">After School</a>
+		 href="" ng-click="showSchoolPayments('after')">After School</a>
 	</div>
 
 
@@ -12,15 +12,16 @@
 		<div class="item item-divider">
 			{{studentCategory | uppercase}} School Students
 		</div>
-		<div ng-repeat="student in students | filter:{ category: studentCategory }" 
+		<div ng-repeat="student in studentList | filter:{ classCategory: studentCategory }" 
 			 ng-if="selected" 
 		class="item item-avatar item-text-wrap">
 			<img ng-src="{{student.image}}" alt="student">
-			<h2><strong>{{student.name}}</strong></h2>
+			<h2><strong>{{student.studentName}}</strong></h2>
 			<h4><strong>{{student.level}}</strong></h4>
-			<p>Tuition Fees:- {{student.tuitionFees | currency : "Rs. "}}</p>
-			<p>Paid:- {{student.feesPaid | currency : "Rs. " }}</p>
-			<button class="button button-small button-positive" ng-click="addFees(student)">Add Fees</button>
+			<!--<p>Tuition Fees:- {{student.tuitionFees | currency : "Rs. "}}</p>-->
+			<p>Total Fees Paid:- {{categoryPaymentDetails[$index].totalFeesPaid | currency : "Rs. " }}</p>
+			<button class="button button-small button-positive" ng-click="addFeesModal(student)">Add Fees</button>
+			<button class="button button-small button-positive" ng-click="showInstallments(categoryPaymentDetails[$index].feeInstalments)">Installments</button>
 		</div>
 	</div>
 
