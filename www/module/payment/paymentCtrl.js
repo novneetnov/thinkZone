@@ -30,14 +30,14 @@ angular.module('thinkZone.controllers')
 		//}
 	//);
 
-	$ionicModal.fromTemplateUrl('module/payment/installment.html', {
+	$ionicModal.fromTemplateUrl('module/payment/installment-form.html', {
 		scope: $scope
 	}).then(function(modal) {
 		$scope.installmentform = modal;
 	});	
 
 	var createModal =  function() {
-		$ionicModal.fromTemplateUrl('module/payment/installment.html', {
+		$ionicModal.fromTemplateUrl('module/payment/installment-form.html', {
 			scope: $scope
 		}).then(function(modal) {
 			$scope.installmentform = modal;
