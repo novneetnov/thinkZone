@@ -30,26 +30,40 @@ angular.module('thinkZone.controllers')
 		//}
 	//);
 
-	var currentStudent = {};
-	$scope.addFeesModal = function(student) {
-		$scope.installmentform.show();
-		currentStudent = student;
-	};
-
 	$ionicModal.fromTemplateUrl('module/payment/installment.html', {
 		scope: $scope
 	}).then(function(modal) {
 		$scope.installmentform = modal;
 	});	
 
+	var createModal =  function() {
+		$ionicModal.fromTemplateUrl('module/payment/installment.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.installmentform = modal;
+		});
+  };
+
+	var currentStudent = {};
+	$scope.addFeesModal = function(student) {
+		$scope.installmentform.show();
+		currentStudent = student;
+	};
+
 	$scope.closeInstallment = function() {
 		$scope.installmentform.hide();
 	};
 
 	$scope.submitInstallment = function(installment) {
+		var today = new Date();
+		var date = today.getDate().toString().length < 2 ? '0' + today.getDate() : today.getDate();
+		var month = (today.getMonth()+1).toString().length < 2 ? '0' + (today.getMonth()+1) : (today.getMonth()+1);
+		installment.date = date+'-'+month+'-'+today.getFullYear()
+		installment.amount = installment.amount + "";
 		var newStudentInstalment = {"student": currentStudent, "installment": installment}
 		PaymentFactory.updateStudentFees(newStudentInstalment);
-		$scope.closeInstallment();
+		$scope.installmentform.remove();
+		createModal();
 	};
 
 	$scope.showInstallments = function(installmentsArray) {
