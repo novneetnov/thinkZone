@@ -30,28 +30,24 @@ angular.module('thinkZone.controllers')
 		//}
 	//);
 
-	$ionicModal.fromTemplateUrl('module/payment/installment-form.html', {
-		scope: $scope
-	}).then(function(modal) {
-		$scope.installmentform = modal;
-	});	
-
-	var createModal =  function() {
+	var createInstallmentForm =  function() {
 		$ionicModal.fromTemplateUrl('module/payment/installment-form.html', {
 			scope: $scope
 		}).then(function(modal) {
-			$scope.installmentform = modal;
+			$scope.installmentForm = modal;
 		});
   };
 
+	createInstallmentForm();
+
 	var currentStudent = {};
 	$scope.addFeesModal = function(student) {
-		$scope.installmentform.show();
+		$scope.installmentForm.show();
 		currentStudent = student;
 	};
 
 	$scope.closeInstallment = function() {
-		$scope.installmentform.hide();
+		$scope.installmentForm.hide();
 	};
 
 	$scope.submitInstallment = function(installment) {
@@ -62,8 +58,8 @@ angular.module('thinkZone.controllers')
 		installment.amount = installment.amount + "";
 		var newStudentInstalment = {"student": currentStudent, "installment": installment}
 		PaymentFactory.updateStudentFees(newStudentInstalment);
-		$scope.installmentform.remove();
-		createModal();
+		$scope.installmentForm.remove();
+		createInstallmentForm();
 	};
 
 	$scope.showInstallments = function(installmentsArray) {
