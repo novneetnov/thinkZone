@@ -318,20 +318,20 @@ angular.module('thinkZone.services')
 			var newPaymentDetails = 
 				this.findStudentPaymentDetails(student, newTeacherData.paymentDetails.preSchool);
 			newPaymentDetails.feeInstalments.push(installment);
-			newPaymentDetails.totalFeesPaid = (parseInt(newPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+			newPaymentDetails.totalFeesPaid = (parseInt(newPaymentDetails.totalFeesPaid) + parseInt(installment.amountPaid)).toString();
 			var currentPaymentDetails = 
 				this.findStudentPaymentDetails(student, currentTeacherData.paymentDetails.preSchool);
 			currentPaymentDetails.feeInstalments.push(installment);
-			currentPaymentDetails.totalFeesPaid = (parseInt(currentPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+			currentPaymentDetails.totalFeesPaid = (parseInt(currentPaymentDetails.totalFeesPaid) + parseInt(installment.amountPaid)).toString();
 		} else if(classCategory == 'after') {
 			var newPaymentDetails = 
 				this.findStudentPaymentDetails(student, newTeacherData.paymentDetails.afterSchool);
 			newPaymentDetails.feeInstalments.push(installment);
-			newPaymentDetails.totalFeesPaid = (parseInt(newPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+			newPaymentDetails.totalFeesPaid = (parseInt(newPaymentDetails.totalFeesPaid) + parseInt(installment.amountPaid)).toString();
 			var currentPaymentDetails = 
 				this.findStudentPaymentDetails(student, currentTeacherData.paymentDetails.afterSchool);
 			currentPaymentDetails.feeInstalments.push(installment);
-			currentPaymentDetails.totalFeesPaid = (parseInt(currentPaymentDetails.totalFeesPaid) + parseInt(installment.amount)).toString();
+			currentPaymentDetails.totalFeesPaid = (parseInt(currentPaymentDetails.totalFeesPaid) + parseInt(installment.amountPaid)).toString();
 		}
 	}
 

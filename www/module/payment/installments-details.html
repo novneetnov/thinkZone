@@ -1,0 +1,32 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Installment History</h1>
+		<div class="buttons">
+			<button class="button button-icon icon ion-ios-close-outline" ng-click="closeInstallmentsDetails()"></button>
+		</div>
+	</ion-header-bar>
+
+	<ion-content>
+		<div class="card">
+			<div class="item item-divider">
+				Student Information	
+			</div>
+			<div class="item item-text-wrap">
+				<h2><strong>{{student.studentName}}</strong></h2>
+				<h3><strong>Category: </strong>{{student.classCategory}}-school</h3>
+				<h3><strong>Level: </strong>{{student.level}}</h3>
+				<h3><strong>Total Fees Paid: </strong>{{installmentsArray.totalFeesPaid | currency : "Rs. "}}</h3>
+			</div>
+		</div>
+		<div class="list list-inset">
+			<div class="item item-divider">
+				Previous Installments
+			</div>
+			<div class="item item-text-wrap" ng-repeat="installment in installmentsArray.feeInstalments">
+				<div><span><strong>Amount: </strong>{{installment.amountPaid | currency : "Rs. "}}</span></div>
+				<div><span><strong>Payment Date: </strong>{{installment.paymentDate}}</span>
+				<p><strong>Comments: </strong>{{installment.comments}}</p>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

@@ -2,20 +2,20 @@
 	<ion-header-bar>
 		<h1 class="title">Add Student Fees</h1>
 		<div class="buttons">
-			<button class="button button-icon con ion-ios-close-outline" ng-click="closeInstallment()"></button>
+			<button class="button button-icon icon ion-ios-close-outline" ng-click="closeInstallmentForm()"></button>
 		</div>
 	</ion-header-bar>
 
 	<ion-content>
-		<form id="installmentForm" name="installmentForm" ng-submit="submitInstallment(installment)">
+		<form id="installmentForm" name="installmentForm" ng-submit="submitInstallmentForm(installment)">
 			<div class="list">
 				<label class="item item-input item-floating-label">
 					<span class="input-label">Amount Paid</span>
-					<input type="number" placeholder="Amount Paid by Student" ng-model="installment.amount">
+					<input type="number" placeholder="Amount Paid by Student" ng-model="installment.amountPaid">
 				</label>
 				<label class="item item-input item-floating-label">
 					<span class="input-label">Comment</span>
-					<input type="text" placeholder="Comments" ng-model="installment.comment">
+					<input type="text" placeholder="Comments" ng-model="installment.comments">
 				</label>
 				<label class="item">
 					<button class="button button-block button-positive" type="submit">Add Fees</button>
